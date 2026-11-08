@@ -2,6 +2,7 @@ package it.unibo.inner;
 
 import it.unibo.inner.api.IterableWithPolicy;
 import it.unibo.inner.api.Predicate;
+import it.unibo.inner.impl.IterableWithPolicyImpl;
 import it.unibo.inner.test.api.Product;
 import it.unibo.inner.test.impl.ProductImpl;
 
@@ -15,11 +16,11 @@ public class TestIterableWithPolicy {
     private TestIterableWithPolicy() {}
 
     private static <T> IterableWithPolicy<T> makeIterableWithPolicy(final T[] elements, final Predicate<T> filter) {
-        return null; // TODO: return the implementation of IterableWithPolicy
+        return new IterableWithPolicyImpl<>(elements, filter);
     }
 
     private static <T> IterableWithPolicy<T> makeIterableWithPolicy(final T[] elements) {
-        return null; // TODO: return the implementation of IterableWithPolicy
+        return new IterableWithPolicyImpl<>(elements);
     }
 
     public static void main() {
@@ -39,6 +40,7 @@ public class TestIterableWithPolicy {
         final IterableWithPolicy<String> evenIterable = makeIterableWithPolicy(test1, filterPippoPluto);
         final IterableWithPolicy<String> oddIterable = makeIterableWithPolicy(test1, filterFooBar);
         // Verify the filter application
+        
         assertContentEqualsInOrder(List.of("pippo", "pluto"), evenIterable);
         assertContentEqualsInOrder(List.of("foo", "bar"), oddIterable);
         // Create reject/accept filters
