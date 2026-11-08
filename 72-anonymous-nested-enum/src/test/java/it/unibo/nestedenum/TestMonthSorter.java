@@ -3,7 +3,6 @@ package it.unibo.nestedenum;
 import it.unibo.functional.api.Function;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -116,6 +115,7 @@ class TestMonthSorter {
                 while (expected.equals(shallowCopy)) {
                     Collections.shuffle(shallowCopy, randomGenerator);
                 }
+                
                 assertNotEquals(expected, shallowCopy);
                 shallowCopy.sort(sorter.sortByOrder());
                 assertEquals(expected, shallowCopy);
